@@ -4,6 +4,11 @@ local Workspace = game:GetService("Workspace")
 local objs = game:GetObjects("rbxassetid://14335043180")
 local import = objs[1]
 import.Parent = game:GetService("ReplicatedStorage")
+for _, part in pairs(import:GetDescendants()) do
+    if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+        pcall(function() part.CanCollide = false; part.CanQuery = false end)
+    end
+end
 index = {
     {
         name = "wood_sword",

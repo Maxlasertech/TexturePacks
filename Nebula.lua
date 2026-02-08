@@ -3,6 +3,11 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 		local TexturePack = game:GetObjects("rbxassetid://14654171957")
 		local Import = TexturePack[1]
 		Import.Parent = game.ReplicatedStorage
+		for _, part in pairs(Import:GetDescendants()) do
+			if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+				pcall(function() part.CanCollide = false; part.CanQuery = false end)
+			end
+		end
 	
 		local TexturePackTable = {
 			{

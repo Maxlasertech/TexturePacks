@@ -1,6 +1,11 @@
 if texturepack then texturepack:Disconnect() end
 local Pack = game:GetObjects("rbxassetid://100570768622198")
 Pack[1].Parent = game:GetService("ReplicatedStorage")
+for _, part in pairs(Pack[1]:GetDescendants()) do
+	if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+		pcall(function() part.CanCollide = false; part.CanQuery = false end)
+	end
+end
 local Items = Pack[1]:GetChildren()
 local lplr = game.Players.LocalPlayer
 getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connect(function(m)
