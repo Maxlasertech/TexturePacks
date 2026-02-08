@@ -24,6 +24,11 @@ getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connec
 			end
 		end
 		local mesh = item:Clone()
+		for _, part in pairs(mesh:GetDescendants()) do
+			if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+				pcall(function() part.CanCollide = false; part.CanQuery = false end)
+			end
+		end
 		mesh.Anchored = false
 		mesh.Parent = m
 		mesh.CFrame = m:WaitForChild("Handle").CFrame * offset
@@ -40,6 +45,11 @@ getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connec
 			end
 		end
 		local mesh = item:Clone()
+		for _, part in pairs(mesh:GetDescendants()) do
+			if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+				pcall(function() part.CanCollide = false; part.CanQuery = false end)
+			end
+		end
 		mesh.Anchored = false
 		mesh.Parent = lplr.Character:WaitForChild(m.Name, 9e9)
 		mesh.CFrame = m:WaitForChild("Handle").CFrame * offset

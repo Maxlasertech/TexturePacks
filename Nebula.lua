@@ -124,7 +124,13 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 					end	                                                                            	
 	
 					Model = v.Model:Clone()
-	
+
+					for _, part in pairs(Model:GetDescendants()) do
+						if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+							pcall(function() part.CanCollide = false; part.CanQuery = false end)
+						end
+					end
+
 					Model.Parent = Tool		
 					Model.Name = v.Name
 						Model.Size *= Vector3.new(1.375, 1.375, 1.375)
@@ -148,7 +154,12 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 					end	                                                                            	
 	
 					Model2 = v.Model:Clone()
-	
+					for _, part in pairs(Model2:GetDescendants()) do
+						if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+							pcall(function() part.CanCollide = false; part.CanQuery = false end)
+						end
+					end
+
 					Model2.Parent = Tool2
 					Model2.Name = v.Name
 	

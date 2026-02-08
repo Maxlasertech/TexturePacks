@@ -49,6 +49,11 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
                 end
             end
             local model = v.model:Clone()
+            for _, part in pairs(model:GetDescendants()) do
+                if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+                    pcall(function() part.CanCollide = false; part.CanQuery = false end)
+                end
+            end
             model.CFrame = tool:WaitForChild("Handle").CFrame * v.offset
             model.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
             model.Parent = tool
@@ -64,6 +69,11 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
                 end
             end
             local model2 = v.model:Clone()
+            for _, part in pairs(model2:GetDescendants()) do
+                if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then
+                    pcall(function() part.CanCollide = false; part.CanQuery = false end)
+                end
+            end
             model2.Anchored = false
             model2.CFrame = tool2:WaitForChild("Handle").CFrame * v.offset
             model2.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
