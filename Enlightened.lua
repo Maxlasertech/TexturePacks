@@ -68,6 +68,7 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
             for i,v in pairs(tool:GetDescendants()) do
                 if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
                     v.Transparency = 1
+                    pcall(function() v.CanCollide = false; v.CanQuery = false end)
                 end
             end
             local model = v.model:Clone()
@@ -82,6 +83,7 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
             for i,v in pairs(tool2:GetDescendants()) do
                 if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
                     v.Transparency = 1
+                    pcall(function() v.CanCollide = false; v.CanQuery = false end)
                 end
             end
             local model2 = v.model:Clone()
@@ -96,3 +98,4 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
         end
     end
 end)
+getgenv().texturepack = func

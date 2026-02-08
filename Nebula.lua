@@ -119,6 +119,7 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 					for i2, v2 in next, Tool:GetDescendants() do
 					   	if v2:IsA("BasePart") or v2:IsA("MeshPart") or v2:IsA("UnionOperation") then				
 					   	                                                                            	v2.Transparency = 1
+																										pcall(function() v.CanCollide = false; v.CanQuery = false end)
 					   	end                                                                         			
 					end	                                                                            	
 	
@@ -209,3 +210,4 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 		end
 	end
 end)
+getgenv().texturepack = thing
